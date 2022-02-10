@@ -6,8 +6,8 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-Author 1
-Author 2
+Tim Riedel
+Neha Donthineni
  
 Further Information:
 http://diystream.cns.utexas.edu/
@@ -17,15 +17,164 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+The goal of this code is to help users identify whether they have anorexia or bulimia.
  
 Known Issues:
-blah, blah, blah, blah
+Questions:
+1. Do you go through periods of binging? BULIMIA
+2. Does your weight increase and decrease significantly over the course of a week (i.e. between 5-20 pounds)? BULIMIA
+3. Do you have regular bouts of dizziness of fainting from fatigue? ANOREXIA
+4. Does your skin ever look yellowish? ANOREXIA
+
+*needs to include trigger warning and mention of personal/sensitive topics to individuals*
 -->
 
    <head> 
-      
-	   PUT YOUR OLD CODE IN HERE
+      <title>CorA</title>  <!-- changed title --> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+<script>
+        var anorexia_count = 0;
+        var bulimia_count = 0;
+	var total = 4; <!-- used to calculate anorexia_count and bulimia_count -->
+
+        function anorexiaAdd(){
+            anorexia_count = anorexia_count + 1;
+		alert(anorexia_count); <!-- helps keep track of anorexia_count -->
+        }
+
+        function bulimiaAdd(){
+            bulimia_count = bulimia_count + 1;
+		alert(bulimia_count); <!-- helps keep track of bulimia_count -->
+        }
+	
+	function anorexiaPercent(){
+		anorexiaPercent = (anorexia_count/4)*100; <!-- function used to calculate % anorexia -->
+	}
+	function bulimiaPercent(){
+		bulimiaPercent = (bulimia_count/4)*100; <!-- function used to calculate % bulimia -->
+	}
+	
+	function showResults() { <!-- function to make sure results would show up on results page -->
+		bulimiaPercent();
+		anorexiaPercent();
+	
+	var resultText = document.getElementById("results"); <!-- Results Function store -->
+	resultText.innerHTML = "Probability it is anorexia =" + anorexiaPercent + "%<br> Probability it is a bulimia =" + bulimiaPercent + "%";
+ 	}
+</script>
+
+
+
+<style>	
+	.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+	<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Anorexia or Bulimia?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p> <!-- UPDATE INTRO BLURB + INCLUDE TW -->
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+      		<p>Do you go through periods of binging?</p>  <!-- Question 1 content --> 
+		
+		<a href="#two" onclick="bulimiaAdd();" class="w3-btn w3-grey w3-round"> Yes </a> <!-- Yes button = bulimia --> 
+		<a href="#two" onclick="anorexiaAdd();"class="w3-btn w3-grey w3-round"> No </a> <!-- No = anorexia -->
+		
+    	</div>
+</div>
+
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1> <!-- updated headers for each page to reflect question number -->
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have regular bouts of dizziness of fainting from fatigue?</p> <!-- Question 2 content --> 
+		
+		<a href="#three" onclick="anorexiaAdd();" class="w3-btn w3-grey w3-round"> Yes </a> <!-- Yes button = anorexia -->
+		<a href="#three" onclick="bulimiaAdd();" class="w3-btn w3-grey w3-round"> No </a> <!-- No = bulimia -->
+		
+	</div>
+</div>	
+
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Does your skin ever look yellowish?</p> <!-- Question 3 content --> 
+		
+		<a href="#four" onclick="anorexiaAdd();" class="w3-btn w3-grey w3-round"> Yes </a> <!-- Yes = anorexia -->
+		<a href="#four" onclick="bulimiaAdd();" class="w3-btn w3-grey w3-round"> No </a> <!-- No = bulimia -->
+		
+	</div>
+</div>	
+
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Does your weight increase and decrease significantly over the course of a week (i.e. between 5-20 pounds)?</p> <!-- Question 4 content --> 
+		
+		<a href="#five" onclick="bulimiaAdd();" class="w3-btn w3-grey w3-round"> Yes </a> <!-- Yes = bulimia -->
+		<a href="#five" onclick="anorexiaAdd();" class="w3-btn w3-grey w3-round"> No </a> <!-- No = anorexia -->
+		
+	</div>
+</div>	
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<button onclick="showResults();">Results</button> <!-- created new results button to click and view % of bulimia or anorexia -->
+		<p id="results"></p> <!-- text on results page --> 
+	</div>
+</div>	
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
 	   
-   </body>
+</body>
 </html>
